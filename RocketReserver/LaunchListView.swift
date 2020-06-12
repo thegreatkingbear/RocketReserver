@@ -12,21 +12,28 @@ struct LaunchListView: View {
     @EnvironmentObject var store: ObjectStore
 
     var body: some View {
-        ZStack {
-            
-            List(self.store.launches) { launch in
-                Text(launch.site)
+        NavigationView {
+            ZStack {
+                
+                List(self.store.launches) { launch in
+                    NavigationLink(
+                        destination:
+                            LaunchDetailView(
+                                id: launch.id,
+                                site: launch.site
+                            )
+                            .environmentObject(self.store)
+                        )
+                        {
+                            LaunchRowView(launch: launch)
+                        }
+                }
+                
             }
-            
+            .navigationBarTitle("SpaceX Launches")
+            .onAppear() {
+                self.store.fetchLaunches()
+            }
         }
-        .onAppear() {
-            self.store.fetchLaunches()
-        }
-    }
-}
-
-struct LaunchListView_Previews: PreviewProvider {
-    static var previews: some View {
-        LaunchListView()
     }
 }

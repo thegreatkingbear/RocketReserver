@@ -16,6 +16,8 @@ struct LaunchRowView: View {
         HStack {
             WebImage(url: URL(string: launch.mission.missionPatch))
                 .resizable()
+                .indicator(.activity)
+                .transition(.fade(duration: 0.5))
                 .scaledToFit()
                 .frame(width: 40, height: 40, alignment: .center)
             

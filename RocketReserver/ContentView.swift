@@ -13,15 +13,9 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            LaunchListView()
+            LaunchListView().environmentObject(self.store)
             
             ActivityIndicator(shouldAnimate: $store.isLoading)
         }
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
     }
 }

@@ -30,7 +30,7 @@ struct LaunchListView: View {
                 }
                 
             }
-            .navigationBarTitle("SpaceX Launches")
+            .navigationBarTitle("Launches")
             .onAppear() {
                 self.store.fetchLaunches()
             }

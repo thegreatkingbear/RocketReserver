@@ -12,8 +12,13 @@ struct LaunchListView: View {
     @EnvironmentObject var store: ObjectStore
 
     var body: some View {
-        List(self.store.launches) { launch in
-            Text(launch.site)
+        ZStack {
+            
+            List(self.store.launches) { launch in
+                Text(launch.site)
+            }
+            
+            ActivityIndicator(shouldAnimate: $store.isLoading)
         }
         .onAppear() {
             self.store.fetchLaunches()

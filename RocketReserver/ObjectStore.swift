@@ -12,16 +12,19 @@ import Apollo
 
 class ObjectStore: ObservableObject {
     @Published var launches: [Launch]
+    @Published var isLoading: Bool
     
     init() {
         self.launches = []
+        self.isLoading = true
     }
     
     public func fetchLaunches() {
         Network.shared.apollo.fetch(query: LaunchListQuery()) { result in
-            
+            self.isLoading = true
             defer {
                 // after the calling ends
+                self.isLoading = false
             }
             
             switch result {

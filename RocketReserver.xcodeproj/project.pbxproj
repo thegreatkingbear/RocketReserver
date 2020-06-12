@@ -23,6 +23,7 @@
 		2A19A7AC24934E2D000B1ABE /* ObjectStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A19A7AB24934E2D000B1ABE /* ObjectStore.swift */; };
 		2A19A7AE24934FB5000B1ABE /* LaunchListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A19A7AD24934FB5000B1ABE /* LaunchListView.swift */; };
 		2A19A7B024935082000B1ABE /* Launch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A19A7AF24935082000B1ABE /* Launch.swift */; };
+		2A19A7B224936091000B1ABE /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A19A7B124936091000B1ABE /* ActivityIndicator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		2A19A7AB24934E2D000B1ABE /* ObjectStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectStore.swift; sourceTree = "<group>"; };
 		2A19A7AD24934FB5000B1ABE /* LaunchListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchListView.swift; sourceTree = "<group>"; };
 		2A19A7AF24935082000B1ABE /* Launch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launch.swift; sourceTree = "<group>"; };
+		2A19A7B124936091000B1ABE /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 				2A19A77B24931093000B1ABE /* AppDelegate.swift */,
 				2A19A77D24931093000B1ABE /* SceneDelegate.swift */,
 				2A19A7AD24934FB5000B1ABE /* LaunchListView.swift */,
+				2A19A7B124936091000B1ABE /* ActivityIndicator.swift */,
 				2A19A77F24931093000B1ABE /* ContentView.swift */,
 				2A19A78124931095000B1ABE /* Assets.xcassets */,
 				2A19A78624931095000B1ABE /* LaunchScreen.storyboard */,
@@ -214,6 +217,7 @@
 				2A19A7A224932B05000B1ABE /* API.swift in Sources */,
 				2A19A7AC24934E2D000B1ABE /* ObjectStore.swift in Sources */,
 				2A19A78024931093000B1ABE /* ContentView.swift in Sources */,
+				2A19A7B224936091000B1ABE /* ActivityIndicator.swift in Sources */,
 				2A19A7AE24934FB5000B1ABE /* LaunchListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

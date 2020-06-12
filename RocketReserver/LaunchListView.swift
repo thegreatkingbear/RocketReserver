@@ -50,11 +50,12 @@ struct LoadMoreButton: View {
     
     var body: some View {
         self.store.lastConnection?.hasMore ?? false ?
-            Button(action: {
-                self.store.loadLaunches()
-            }) {
-                Text("Tap to load more")
-            }
+            (self.store.activeRequest == nil) ?
+                Button("Tap to load more", action: {
+                    self.store.loadLaunches()
+                })
+            :
+                nil
         :
             nil
     }

@@ -14,6 +14,7 @@ class ObjectStore: ObservableObject {
     @Published var launches: [Launch]
     @Published var isLoading: Bool
     @Published var lastConnection: LaunchListQuery.Data.Launch?
+    @Published var activeRequest: Apollo.Cancellable?
 
     init() {
         self.launches = []
@@ -34,10 +35,14 @@ class ObjectStore: ObservableObject {
     }
     
     private func fetchLaunches(from cursor: String?) {
-        Network.shared.apollo.fetch(query: LaunchListQuery(cursor: cursor)) { result in
-            self.isLoading = true
+        // loading start
+        self.isLoading = true
+        
+        activeRequest = Network.shared.apollo.fetch(query: LaunchListQuery(cursor: cursor)) { result in
+            self.activeRequest = nil
+            
             defer {
-                // after the calling ends
+                // loading ends
                 self.isLoading = false
             }
             
@@ -57,7 +62,7 @@ class ObjectStore: ObservableObject {
                     }
                     self.launches.append(contentsOf: items ?? [])
                 }
-            case . failure(let error):
+            case .failure(let error):
                 print(error)
             }
         }

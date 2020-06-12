@@ -17,7 +17,7 @@ struct LaunchRowView: View {
             WebImage(url: URL(string: launch.mission.missionPatch))
                 .resizable()
                 .indicator(.activity)
-                .transition(.fade(duration: 0.5))
+                .transition(.fade(duration: 0.5)) // not sure why this is not working
                 .scaledToFit()
                 .frame(width: 40, height: 40, alignment: .center)
             

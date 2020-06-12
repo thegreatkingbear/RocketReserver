@@ -18,7 +18,6 @@ struct LaunchListView: View {
                 Text(launch.site)
             }
             
-            ActivityIndicator(shouldAnimate: $store.isLoading)
         }
         .onAppear() {
             self.store.fetchLaunches()

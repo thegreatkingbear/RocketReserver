@@ -9,8 +9,14 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var store: ObjectStore
+    
     var body: some View {
-        LaunchListView()
+        ZStack {
+            LaunchListView()
+            
+            ActivityIndicator(shouldAnimate: $store.isLoading)
+        }
     }
 }
 

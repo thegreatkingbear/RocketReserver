@@ -13,27 +13,49 @@ struct LaunchListView: View {
 
     var body: some View {
         NavigationView {
-            ZStack {
+            VStack {
                 
-                List(self.store.launches) { launch in
-                    NavigationLink(
-                        destination:
-                            LaunchDetailView(
-                                id: launch.id,
-                                site: launch.site
-                            )
+                List {
+                    Section(
+                        footer: LoadMoreButton()
                             .environmentObject(self.store)
-                        )
-                        {
-                            LaunchRowView(launch: launch)
+                    ) {
+                        ForEach(self.store.launches) { launch in
+                            NavigationLink(
+                                destination:
+                                    LaunchDetailView(
+                                        id: launch.id,
+                                        site: launch.site
+                                    )
+                                    .environmentObject(self.store)
+                                )
+                                {
+                                    LaunchRowView(launch: launch)
+                                }
                         }
+                    }
                 }
                 
             }
             .navigationBarTitle("Launches")
             .onAppear() {
-                self.store.fetchLaunches()
+                self.store.loadLaunches()
             }
         }
+    }
+}
+
+struct LoadMoreButton: View {
+    @EnvironmentObject var store: ObjectStore
+    
+    var body: some View {
+        self.store.lastConnection?.hasMore ?? false ?
+            Button(action: {
+                self.store.loadLaunches()
+            }) {
+                Text("Tap to load more")
+            }
+        :
+            nil
     }
 }

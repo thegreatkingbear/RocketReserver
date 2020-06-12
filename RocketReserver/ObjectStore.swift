@@ -13,14 +13,28 @@ import Apollo
 class ObjectStore: ObservableObject {
     @Published var launches: [Launch]
     @Published var isLoading: Bool
-    
+    @Published var lastConnection: LaunchListQuery.Data.Launch?
+
     init() {
         self.launches = []
         self.isLoading = true
     }
     
-    public func fetchLaunches() {
-        Network.shared.apollo.fetch(query: LaunchListQuery()) { result in
+    public func loadLaunches() {
+        guard let connection = self.lastConnection else {
+            self.fetchLaunches(from: nil)
+            return
+        }
+        
+        guard connection.hasMore else {
+            return
+        }
+        
+        self.fetchLaunches(from: connection.cursor)
+    }
+    
+    private func fetchLaunches(from cursor: String?) {
+        Network.shared.apollo.fetch(query: LaunchListQuery(cursor: cursor)) { result in
             self.isLoading = true
             defer {
                 // after the calling ends
@@ -29,8 +43,20 @@ class ObjectStore: ObservableObject {
             
             switch result {
             case .success(let results):
-                let items = results.data?.launches.launches.map { Launch(id: $0?.id ?? "", site: $0?.site ?? "", mission: Mission(name: $0?.mission?.name ?? "", missionPatch: $0?.mission?.missionPatch ?? "")) }
-                self.launches.append(contentsOf: items ?? [])
+                if let launchConnection = results.data?.launches {
+                    self.lastConnection = launchConnection
+                    let items = results.data?.launches.launches.map {
+                        Launch(
+                            id: $0?.id ?? "",
+                            site: $0?.site ?? "",
+                            mission: Mission(
+                                name: $0?.mission?.name ?? "",
+                                missionPatch: $0?.mission?.missionPatch ?? ""
+                            )
+                        )
+                    }
+                    self.launches.append(contentsOf: items ?? [])
+                }
             case . failure(let error):
                 print(error)
             }

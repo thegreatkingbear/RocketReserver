@@ -8,8 +8,8 @@ public final class LaunchListQuery: GraphQLQuery {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition: String =
     """
-    query LaunchList {
-      launches {
+    query LaunchList($cursor: String) {
+      launches(after: $cursor) {
         __typename
         cursor
         hasMore
@@ -29,14 +29,21 @@ public final class LaunchListQuery: GraphQLQuery {
 
   public let operationName: String = "LaunchList"
 
-  public init() {
+  public var cursor: String?
+
+  public init(cursor: String? = nil) {
+    self.cursor = cursor
+  }
+
+  public var variables: GraphQLMap? {
+    return ["cursor": cursor]
   }
 
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes: [String] = ["Query"]
 
     public static let selections: [GraphQLSelection] = [
-      GraphQLField("launches", type: .nonNull(.object(Launch.selections))),
+      GraphQLField("launches", arguments: ["after": GraphQLVariable("cursor")], type: .nonNull(.object(Launch.selections))),
     ]
 
     public private(set) var resultMap: ResultMap

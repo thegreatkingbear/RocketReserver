@@ -11,8 +11,9 @@ import Foundation
 struct Launch: Identifiable, Equatable, Comparable {
     var id: String
     var site: String
+    var mission: Mission
 
-    static let `default` = Self(id: "", site: "")
+    static let `default` = Self(id: "", site: "", mission: Mission(name: "", missionPatch: ""))
 
     static func < (lhs: Launch, rhs: Launch) -> Bool {
         return lhs.site < rhs.site
@@ -22,8 +23,9 @@ struct Launch: Identifiable, Equatable, Comparable {
         return lhs.id == rhs.id
     }
 
-    init(id: String, site: String) {
+    init(id: String, site: String, mission: Mission) {
         self.id = id
         self.site = site
+        self.mission = mission
     }
 }

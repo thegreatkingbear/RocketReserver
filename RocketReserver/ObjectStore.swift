@@ -29,7 +29,7 @@ class ObjectStore: ObservableObject {
             
             switch result {
             case .success(let results):
-                let items = results.data?.launches.launches.map { Launch(id: $0?.id ?? "", site: $0?.site ?? "") }
+                let items = results.data?.launches.launches.map { Launch(id: $0?.id ?? "", site: $0?.site ?? "", mission: Mission(name: $0?.mission?.name ?? "", missionPatch: $0?.mission?.missionPatch ?? "")) }
                 self.launches.append(contentsOf: items ?? [])
             case . failure(let error):
                 print(error)

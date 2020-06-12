@@ -27,6 +27,7 @@
 		2A19A7B4249364A3000B1ABE /* LaunchRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A19A7B3249364A3000B1ABE /* LaunchRowView.swift */; };
 		2A19A7B624936560000B1ABE /* LaunchDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A19A7B524936560000B1ABE /* LaunchDetailView.swift */; };
 		2A19A7B924936FAB000B1ABE /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 2A19A7B824936FAB000B1ABE /* SDWebImageSwiftUI */; };
+		2A19A7BB24937135000B1ABE /* Mission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A19A7BA24937135000B1ABE /* Mission.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		2A19A7B124936091000B1ABE /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		2A19A7B3249364A3000B1ABE /* LaunchRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchRowView.swift; sourceTree = "<group>"; };
 		2A19A7B524936560000B1ABE /* LaunchDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchDetailView.swift; sourceTree = "<group>"; };
+		2A19A7BA24937135000B1ABE /* Mission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mission.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 				2A19A7A924932D6D000B1ABE /* Network.swift */,
 				2A19A7AB24934E2D000B1ABE /* ObjectStore.swift */,
 				2A19A7AF24935082000B1ABE /* Launch.swift */,
+				2A19A7BA24937135000B1ABE /* Mission.swift */,
 				2A19A7A124932B05000B1ABE /* API.swift */,
 				2A19A7A624932CDA000B1ABE /* LaunchList.graphql */,
 				2A19A79B24931946000B1ABE /* schema.json */,
@@ -226,6 +229,7 @@
 				2A19A7B624936560000B1ABE /* LaunchDetailView.swift in Sources */,
 				2A19A7B024935082000B1ABE /* Launch.swift in Sources */,
 				2A19A77E24931093000B1ABE /* SceneDelegate.swift in Sources */,
+				2A19A7BB24937135000B1ABE /* Mission.swift in Sources */,
 				2A19A7A224932B05000B1ABE /* API.swift in Sources */,
 				2A19A7AC24934E2D000B1ABE /* ObjectStore.swift in Sources */,
 				2A19A78024931093000B1ABE /* ContentView.swift in Sources */,

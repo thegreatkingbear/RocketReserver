@@ -10,22 +10,32 @@ import Foundation
 
 struct Launch: Identifiable, Equatable, Comparable {
     var id: String
-    var site: String
-    var mission: Mission
+    var site: String?
+    var mission: Mission?
+    var rocket: Rocket?
+    var isBooked: Bool?
 
-    static let `default` = Self(id: "", site: "", mission: Mission(name: "", missionPatch: ""))
+    static let `default` = Self(
+        id: "id",
+        site: "site",
+        mission: Mission.default,
+        rocket: Rocket.default,
+        isBooked: false
+    )
 
     static func < (lhs: Launch, rhs: Launch) -> Bool {
-        return lhs.site < rhs.site
+        return lhs.id < rhs.id
     }
     
     static func ==(lhs: Launch, rhs: Launch) -> Bool {
         return lhs.id == rhs.id
     }
 
-    init(id: String, site: String, mission: Mission) {
+    init(id: String, site: String? = nil, mission: Mission? = nil, rocket: Rocket? = nil, isBooked: Bool? = nil) {
         self.id = id
         self.site = site
         self.mission = mission
+        self.rocket = rocket
+        self.isBooked = isBooked
     }
 }

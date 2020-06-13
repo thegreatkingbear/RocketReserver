@@ -12,7 +12,10 @@ struct Mission: Equatable, Comparable {
     var name: String
     var missionPatch: String
 
-    static let `default` = Self(name: "", missionPatch: "")
+    static let `default` = Self(
+        name: "mission name",
+        missionPatch: "mission patch"
+    )
 
     static func < (lhs: Mission, rhs: Mission) -> Bool {
         return lhs.name < rhs.name

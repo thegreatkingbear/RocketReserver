@@ -12,6 +12,7 @@ import Apollo
 
 class ObjectStore: ObservableObject {
     @Published var launches: [Launch]
+    @Published var launchDetail: Launch?
     @Published var isLoading: Bool
     @Published var lastConnection: LaunchListQuery.Data.Launch?
     @Published var activeRequest: Apollo.Cancellable?
@@ -61,6 +62,39 @@ class ObjectStore: ObservableObject {
                         )
                     }
                     self.launches.append(contentsOf: items ?? [])
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    public func fetchLaunchDetails(id: String) {
+        self.isLoading = true
+        
+        activeRequest = Network.shared.apollo.fetch(query: LaunchDetailsQuery(id: id)) { result in
+            self.activeRequest = nil
+            
+            defer {
+                self.isLoading = false
+            }
+            
+            switch result {
+            case .success(let results):
+                if let launch = results.data?.launch {
+                    self.launchDetail = Launch(
+                        id: launch.id,
+                        site: launch.site,
+                        mission: Mission(
+                            name: launch.mission?.name ?? "",
+                            missionPatch: launch.mission?.missionPatch ?? ""
+                        ),
+                        rocket: Rocket(
+                            name: launch.rocket?.name ?? "",
+                            type: launch.rocket?.type ?? ""
+                        ),
+                        isBooked: launch.isBooked
+                    )
                 }
             case .failure(let error):
                 print(error)

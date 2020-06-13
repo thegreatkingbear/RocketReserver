@@ -28,6 +28,8 @@
 		2A19A7B624936560000B1ABE /* LaunchDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A19A7B524936560000B1ABE /* LaunchDetailView.swift */; };
 		2A19A7B924936FAB000B1ABE /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 2A19A7B824936FAB000B1ABE /* SDWebImageSwiftUI */; };
 		2A19A7BB24937135000B1ABE /* Mission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A19A7BA24937135000B1ABE /* Mission.swift */; };
+		2A19A7BD2494B6B0000B1ABE /* LaunchDetails.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 2A19A7BC2494B6B0000B1ABE /* LaunchDetails.graphql */; };
+		2A19A7BF2494B867000B1ABE /* Rocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A19A7BE2494B867000B1ABE /* Rocket.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,8 @@
 		2A19A7B3249364A3000B1ABE /* LaunchRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchRowView.swift; sourceTree = "<group>"; };
 		2A19A7B524936560000B1ABE /* LaunchDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchDetailView.swift; sourceTree = "<group>"; };
 		2A19A7BA24937135000B1ABE /* Mission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mission.swift; sourceTree = "<group>"; };
+		2A19A7BC2494B6B0000B1ABE /* LaunchDetails.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = LaunchDetails.graphql; sourceTree = "<group>"; };
+		2A19A7BE2494B867000B1ABE /* Rocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rocket.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,15 +92,17 @@
 		2A19A77A24931093000B1ABE /* RocketReserver */ = {
 			isa = PBXGroup;
 			children = (
-				2A19A7A924932D6D000B1ABE /* Network.swift */,
-				2A19A7AB24934E2D000B1ABE /* ObjectStore.swift */,
-				2A19A7AF24935082000B1ABE /* Launch.swift */,
-				2A19A7BA24937135000B1ABE /* Mission.swift */,
-				2A19A7A124932B05000B1ABE /* API.swift */,
-				2A19A7A624932CDA000B1ABE /* LaunchList.graphql */,
-				2A19A79B24931946000B1ABE /* schema.json */,
 				2A19A77B24931093000B1ABE /* AppDelegate.swift */,
 				2A19A77D24931093000B1ABE /* SceneDelegate.swift */,
+				2A19A79B24931946000B1ABE /* schema.json */,
+				2A19A7A624932CDA000B1ABE /* LaunchList.graphql */,
+				2A19A7BC2494B6B0000B1ABE /* LaunchDetails.graphql */,
+				2A19A7AB24934E2D000B1ABE /* ObjectStore.swift */,
+				2A19A7A924932D6D000B1ABE /* Network.swift */,
+				2A19A7A124932B05000B1ABE /* API.swift */,
+				2A19A7AF24935082000B1ABE /* Launch.swift */,
+				2A19A7BE2494B867000B1ABE /* Rocket.swift */,
+				2A19A7BA24937135000B1ABE /* Mission.swift */,
 				2A19A7AD24934FB5000B1ABE /* LaunchListView.swift */,
 				2A19A7B524936560000B1ABE /* LaunchDetailView.swift */,
 				2A19A7B3249364A3000B1ABE /* LaunchRowView.swift */,
@@ -192,6 +198,7 @@
 				2A19A78824931095000B1ABE /* LaunchScreen.storyboard in Resources */,
 				2A19A78524931095000B1ABE /* Preview Assets.xcassets in Resources */,
 				2A19A78224931095000B1ABE /* Assets.xcassets in Resources */,
+				2A19A7BD2494B6B0000B1ABE /* LaunchDetails.graphql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,6 +231,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A19A7B4249364A3000B1ABE /* LaunchRowView.swift in Sources */,
+				2A19A7BF2494B867000B1ABE /* Rocket.swift in Sources */,
 				2A19A7AA24932D6D000B1ABE /* Network.swift in Sources */,
 				2A19A77C24931093000B1ABE /* AppDelegate.swift in Sources */,
 				2A19A7B624936560000B1ABE /* LaunchDetailView.swift in Sources */,

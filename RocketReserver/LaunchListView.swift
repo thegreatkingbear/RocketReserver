@@ -25,7 +25,7 @@ struct LaunchListView: View {
                                 destination:
                                     LaunchDetailView(
                                         id: launch.id,
-                                        site: launch.site
+                                        site: launch.site ?? ""
                                     )
                                     .environmentObject(self.store)
                                 )

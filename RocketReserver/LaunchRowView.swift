@@ -14,7 +14,7 @@ struct LaunchRowView: View {
     
     var body: some View {
         HStack {
-            WebImage(url: URL(string: launch.mission.missionPatch))
+            WebImage(url: URL(string: launch.mission?.missionPatch ?? ""))
                 .resizable()
                 .indicator(.activity)
                 .transition(.fade(duration: 0.5)) // not sure why this is not working
@@ -22,8 +22,8 @@ struct LaunchRowView: View {
                 .frame(width: 40, height: 40, alignment: .center)
             
             VStack(alignment: .leading) {
-                Text(launch.mission.name)
-                Text(launch.site)
+                Text(launch.mission?.name ?? "")
+                Text(launch.site ?? "")
             }
         }
     }

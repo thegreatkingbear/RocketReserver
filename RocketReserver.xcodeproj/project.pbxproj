@@ -30,6 +30,8 @@
 		2A19A7BB24937135000B1ABE /* Mission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A19A7BA24937135000B1ABE /* Mission.swift */; };
 		2A19A7BD2494B6B0000B1ABE /* LaunchDetails.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 2A19A7BC2494B6B0000B1ABE /* LaunchDetails.graphql */; };
 		2A19A7BF2494B867000B1ABE /* Rocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A19A7BE2494B867000B1ABE /* Rocket.swift */; };
+		2A19A7C12495CFAC000B1ABE /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A19A7C02495CFAC000B1ABE /* LoginView.swift */; };
+		2A19A7C424964504000B1ABE /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2A19A7C324964504000B1ABE /* KeychainSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +56,7 @@
 		2A19A7BA24937135000B1ABE /* Mission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mission.swift; sourceTree = "<group>"; };
 		2A19A7BC2494B6B0000B1ABE /* LaunchDetails.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = LaunchDetails.graphql; sourceTree = "<group>"; };
 		2A19A7BE2494B867000B1ABE /* Rocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rocket.swift; sourceTree = "<group>"; };
+		2A19A7C02495CFAC000B1ABE /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +67,7 @@
 				2A19A7B924936FAB000B1ABE /* SDWebImageSwiftUI in Frameworks */,
 				2A19A791249315BF000B1ABE /* ApolloCodegenLib in Frameworks */,
 				2A19A797249315BF000B1ABE /* Apollo in Frameworks */,
+				2A19A7C424964504000B1ABE /* KeychainSwift in Frameworks */,
 				2A19A799249315BF000B1ABE /* ApolloCore in Frameworks */,
 				2A19A795249315BF000B1ABE /* ApolloWebSocket in Frameworks */,
 				2A19A793249315BF000B1ABE /* ApolloSQLite in Frameworks */,
@@ -103,6 +107,7 @@
 				2A19A7AF24935082000B1ABE /* Launch.swift */,
 				2A19A7BE2494B867000B1ABE /* Rocket.swift */,
 				2A19A7BA24937135000B1ABE /* Mission.swift */,
+				2A19A7C02495CFAC000B1ABE /* LoginView.swift */,
 				2A19A7AD24934FB5000B1ABE /* LaunchListView.swift */,
 				2A19A7B524936560000B1ABE /* LaunchDetailView.swift */,
 				2A19A7B3249364A3000B1ABE /* LaunchRowView.swift */,
@@ -148,6 +153,7 @@
 				2A19A796249315BF000B1ABE /* Apollo */,
 				2A19A798249315BF000B1ABE /* ApolloCore */,
 				2A19A7B824936FAB000B1ABE /* SDWebImageSwiftUI */,
+				2A19A7C324964504000B1ABE /* KeychainSwift */,
 			);
 			productName = RocketReserver;
 			productReference = 2A19A77824931093000B1ABE /* RocketReserver.app */;
@@ -180,6 +186,7 @@
 			packageReferences = (
 				2A19A78F249315BF000B1ABE /* XCRemoteSwiftPackageReference "apollo-ios" */,
 				2A19A7B724936FAB000B1ABE /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				2A19A7C224964504000B1ABE /* XCRemoteSwiftPackageReference "keychain-swift" */,
 			);
 			productRefGroup = 2A19A77924931093000B1ABE /* Products */;
 			projectDirPath = "";
@@ -238,6 +245,7 @@
 				2A19A7B024935082000B1ABE /* Launch.swift in Sources */,
 				2A19A77E24931093000B1ABE /* SceneDelegate.swift in Sources */,
 				2A19A7BB24937135000B1ABE /* Mission.swift in Sources */,
+				2A19A7C12495CFAC000B1ABE /* LoginView.swift in Sources */,
 				2A19A7A224932B05000B1ABE /* API.swift in Sources */,
 				2A19A7AC24934E2D000B1ABE /* ObjectStore.swift in Sources */,
 				2A19A78024931093000B1ABE /* ContentView.swift in Sources */,
@@ -454,6 +462,14 @@
 				minimumVersion = 1.5.0;
 			};
 		};
+		2A19A7C224964504000B1ABE /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/keychain-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 19.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -486,6 +502,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2A19A7B724936FAB000B1ABE /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
 			productName = SDWebImageSwiftUI;
+		};
+		2A19A7C324964504000B1ABE /* KeychainSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2A19A7C224964504000B1ABE /* XCRemoteSwiftPackageReference "keychain-swift" */;
+			productName = KeychainSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

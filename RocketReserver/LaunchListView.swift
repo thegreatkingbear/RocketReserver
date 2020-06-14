@@ -39,7 +39,10 @@ struct LaunchListView: View {
             }
             .navigationBarTitle("Launches")
             .onAppear() {
-                self.store.loadLaunches()
+                // to make sure that this happens only on the first time
+                if self.store.launches.count < 1 {
+                    self.store.loadLaunches()
+                }
             }
         }
     }
@@ -49,6 +52,7 @@ struct LoadMoreButton: View {
     @EnvironmentObject var store: ObjectStore
     
     var body: some View {
+        // loading button should appear only when previous data exists + cursor - active request
         self.store.lastConnection?.hasMore ?? false ?
             (self.store.activeRequest == nil) ?
                 Button("Tap to load more", action: {

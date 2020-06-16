@@ -110,24 +110,12 @@
 				2A19A77B24931093000B1ABE /* AppDelegate.swift */,
 				2A19A77D24931093000B1ABE /* SceneDelegate.swift */,
 				2A19A79B24931946000B1ABE /* schema.json */,
-				2A19A7A624932CDA000B1ABE /* LaunchList.graphql */,
-				2A19A7BC2494B6B0000B1ABE /* LaunchDetails.graphql */,
-				2A19A7C724964FB3000B1ABE /* Login.graphql */,
-				2A19A7C924984D82000B1ABE /* BookTrip.graphql */,
-				2A19A7CB24984DFB000B1ABE /* CancelTrip.graphql */,
 				2A19A7AB24934E2D000B1ABE /* ObjectStore.swift */,
 				2A19A7A924932D6D000B1ABE /* Network.swift */,
 				2A19A7A124932B05000B1ABE /* API.swift */,
-				2A19A7AF24935082000B1ABE /* Launch.swift */,
-				2A19A7BE2494B867000B1ABE /* Rocket.swift */,
-				2A19A7BA24937135000B1ABE /* Mission.swift */,
-				2A19A7CD2498844F000B1ABE /* GlobalAlert.swift */,
-				2A19A7C02495CFAC000B1ABE /* LoginView.swift */,
-				2A19A7AD24934FB5000B1ABE /* LaunchListView.swift */,
-				2A19A7B3249364A3000B1ABE /* LaunchRowView.swift */,
-				2A19A7B524936560000B1ABE /* LaunchDetailView.swift */,
-				2A19A7B124936091000B1ABE /* ActivityIndicator.swift */,
-				2A19A77F24931093000B1ABE /* ContentView.swift */,
+				2A19A7D12498A383000B1ABE /* GraphQL */,
+				2A19A7CF2498A274000B1ABE /* Model */,
+				2A19A7D02498A28A000B1ABE /* View */,
 				2A19A78124931095000B1ABE /* Assets.xcassets */,
 				2A19A78624931095000B1ABE /* LaunchScreen.storyboard */,
 				2A19A78924931095000B1ABE /* Info.plist */,
@@ -142,6 +130,42 @@
 				2A19A78424931095000B1ABE /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		2A19A7CF2498A274000B1ABE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2A19A7AF24935082000B1ABE /* Launch.swift */,
+				2A19A7BE2494B867000B1ABE /* Rocket.swift */,
+				2A19A7BA24937135000B1ABE /* Mission.swift */,
+				2A19A7CD2498844F000B1ABE /* GlobalAlert.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2A19A7D02498A28A000B1ABE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2A19A7C02495CFAC000B1ABE /* LoginView.swift */,
+				2A19A7AD24934FB5000B1ABE /* LaunchListView.swift */,
+				2A19A7B3249364A3000B1ABE /* LaunchRowView.swift */,
+				2A19A7B524936560000B1ABE /* LaunchDetailView.swift */,
+				2A19A7B124936091000B1ABE /* ActivityIndicator.swift */,
+				2A19A77F24931093000B1ABE /* ContentView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2A19A7D12498A383000B1ABE /* GraphQL */ = {
+			isa = PBXGroup;
+			children = (
+				2A19A7A624932CDA000B1ABE /* LaunchList.graphql */,
+				2A19A7BC2494B6B0000B1ABE /* LaunchDetails.graphql */,
+				2A19A7C724964FB3000B1ABE /* Login.graphql */,
+				2A19A7C924984D82000B1ABE /* BookTrip.graphql */,
+				2A19A7CB24984DFB000B1ABE /* CancelTrip.graphql */,
+			);
+			path = GraphQL;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

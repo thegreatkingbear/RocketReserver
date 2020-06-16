@@ -13,7 +13,6 @@ struct LaunchDetailView: View {
     @EnvironmentObject var store: ObjectStore
     @Environment(\.presentationMode) var presentationMode
     var id: String
-    var site: String
     
     var body: some View {
         VStack {
@@ -40,20 +39,35 @@ struct LaunchDetailView: View {
             .sheet(isPresented: self.$store.isLoggedOut) {
                 LoginView().environmentObject(self.store)
             }
+            
+            .alert(item: self.$store.globalAlert) { globalAlert in
+                Alert(
+                    title: Text(globalAlert.title),
+                    message: Text(globalAlert.message)
+                )
+            }
 
             Spacer()
         }
         .navigationBarItems(trailing: navigationBarButton())
         .onAppear() {
-            self.store.fetchLaunchDetails(id: self.id)
+            self.store.launchDetail = Launch.default // clean up
+            self.store.fetchLaunchDetails(id: self.id, forceReload: true)
         }
     }
 
     private func navigationBarButton() -> some View {
-        Button("Book Now!") {
-            if !self.store.checkOutLogInStatus() {
-                
+        return self.store.launchDetail?.isBooked ?? false ?
+            Button("Cancel Trip") {
+                if !self.store.checkOutLogInStatus() {
+                    self.store.cancelTripOf(id: self.id)
+                }
             }
-        }
+            :
+            Button("Book Now!") {
+                if !self.store.checkOutLogInStatus() {
+                    self.store.bookTripOf(id: self.id)
+                }
+            }
     }
 }

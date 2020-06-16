@@ -20,21 +20,23 @@ class ObjectStore: ObservableObject {
     @Published var activeRequest: Apollo.Cancellable?
     @Published var isLoggedOut: Bool
     @Published var loginEmail: String {
-       didSet {
-           if self.emailValidator(loginEmail) {
-               self.errorMessage = ""
-           } else {
-               self.errorMessage = "Valid email address needed"
-           }
-       }
-   }
+        didSet {
+            if self.emailValidator(loginEmail) {
+                self.errorMessage = ""
+            } else {
+                self.errorMessage = "Valid email address needed"
+            }
+        }
+    }
     @Published var errorMessage: String = ""
+    @Published var globalAlert: GlobalAlert?
 
     init() {
         self.launches = []
         self.isLoading = true
         self.isLoggedOut = false
         self.loginEmail = ""
+        self.globalAlert = nil
     }
     
     public func loadLaunches() {
@@ -84,10 +86,17 @@ class ObjectStore: ObservableObject {
         }
     }
     
-    public func fetchLaunchDetails(id: String) {
+    public func fetchLaunchDetails(id: String, forceReload: Bool = false) {
         self.isLoading = true
         
-        activeRequest = Network.shared.apollo.fetch(query: LaunchDetailsQuery(id: id)) { result in
+        let cachePolicy: CachePolicy
+        if forceReload {
+            cachePolicy = .fetchIgnoringCacheCompletely
+        } else {
+            cachePolicy = .returnCacheDataElseFetch
+        }
+        
+        activeRequest = Network.shared.apollo.fetch(query: LaunchDetailsQuery(id: id), cachePolicy: cachePolicy) { result in
             self.activeRequest = nil
             
             defer {
@@ -112,7 +121,10 @@ class ObjectStore: ObservableObject {
                     )
                 }
             case .failure(let error):
-                print(error)
+                self.globalAlert = GlobalAlert(
+                    title: "Failure",
+                    message: error.localizedDescription
+                )
             }
         }
     }
@@ -137,11 +149,16 @@ class ObjectStore: ObservableObject {
                 
                 // should be handled before production
                 if let error = results.errors {
-                    print(error)
+                    self.globalAlert = GlobalAlert(
+                        title: "Failure",
+                        message: error.description
+                    )
                 }
             case .failure(let error):
-                // should be handled before production
-                print(error)
+                self.globalAlert = GlobalAlert(
+                    title: "Failure",
+                    message: error.localizedDescription
+                )
             }
         }
     }
@@ -159,5 +176,70 @@ class ObjectStore: ObservableObject {
         let emailFormat = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailFormat)
         return emailPredicate.evaluate(with: string)
+    }
+    
+    public func bookTripOf(id: String) {
+        self.isLoading = true
+        
+        activeRequest = Network.shared.apollo.perform(mutation: BookTripMutation(id: id)) { result in
+            self.activeRequest = nil
+            
+            defer {
+                self.isLoading = false
+            }
+            
+            switch result {
+            case .success(let results):
+                if results.data?.bookTrips.success ?? false {
+                    self.launchDetail?.isBooked = true
+                    self.globalAlert = GlobalAlert(
+                        title: "Success",
+                        message: results.data?.bookTrips.message ?? "Trip booked successfully."
+                    )
+                } else {
+                    self.globalAlert = GlobalAlert(
+                        title: "Failure",
+                        message: results.data?.bookTrips.message ?? "Could not book trip."
+                    )
+                }
+            case .failure(let error):
+                self.globalAlert = GlobalAlert(
+                    title: "Failure",
+                    message: error.localizedDescription
+                )
+            }
+        }
+    }
+    
+    public func cancelTripOf(id: String) {
+        self.isLoading = true
+        activeRequest = Network.shared.apollo.perform(mutation: CancelTripMutation(id: id)) { result in
+            self.activeRequest = nil
+            
+            defer {
+                self.isLoading = false
+            }
+            
+            switch result {
+            case .success(let results):
+                if results.data?.cancelTrip.success ?? false {
+                    self.launchDetail?.isBooked = false
+                        self.globalAlert = GlobalAlert(
+                            title: "Success",
+                            message: results.data?.cancelTrip.message ?? "Trip canceled successfully."
+                        )
+                    } else {
+                        self.globalAlert = GlobalAlert(
+                            title: "Failure",
+                            message: results.data?.cancelTrip.message ?? "Could not cancel trip."
+                        )
+                    }
+            case .failure(let error):
+                self.globalAlert = GlobalAlert(
+                    title: "Failure",
+                    message: error.localizedDescription
+                )
+            }
+        }
     }
 }

@@ -24,8 +24,7 @@ struct LaunchListView: View {
                             NavigationLink(
                                 destination:
                                     LaunchDetailView(
-                                        id: launch.id,
-                                        site: launch.site ?? ""
+                                        id: launch.id
                                     )
                                     .environmentObject(self.store)
                                 )

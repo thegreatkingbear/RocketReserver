@@ -36,6 +36,7 @@
 		2A19A7C824964FB3000B1ABE /* Login.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 2A19A7C724964FB3000B1ABE /* Login.graphql */; };
 		2A19A7CA24984D82000B1ABE /* BookTrip.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 2A19A7C924984D82000B1ABE /* BookTrip.graphql */; };
 		2A19A7CC24984DFB000B1ABE /* CancelTrip.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 2A19A7CB24984DFB000B1ABE /* CancelTrip.graphql */; };
+		2A19A7CE2498844F000B1ABE /* GlobalAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A19A7CD2498844F000B1ABE /* GlobalAlert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,7 @@
 		2A19A7C724964FB3000B1ABE /* Login.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Login.graphql; sourceTree = "<group>"; };
 		2A19A7C924984D82000B1ABE /* BookTrip.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = BookTrip.graphql; sourceTree = "<group>"; };
 		2A19A7CB24984DFB000B1ABE /* CancelTrip.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = CancelTrip.graphql; sourceTree = "<group>"; };
+		2A19A7CD2498844F000B1ABE /* GlobalAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalAlert.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 				2A19A7AF24935082000B1ABE /* Launch.swift */,
 				2A19A7BE2494B867000B1ABE /* Rocket.swift */,
 				2A19A7BA24937135000B1ABE /* Mission.swift */,
+				2A19A7CD2498844F000B1ABE /* GlobalAlert.swift */,
 				2A19A7C02495CFAC000B1ABE /* LoginView.swift */,
 				2A19A7AD24934FB5000B1ABE /* LaunchListView.swift */,
 				2A19A7B3249364A3000B1ABE /* LaunchRowView.swift */,
@@ -257,6 +260,7 @@
 				2A19A7AA24932D6D000B1ABE /* Network.swift in Sources */,
 				2A19A77C24931093000B1ABE /* AppDelegate.swift in Sources */,
 				2A19A7B624936560000B1ABE /* LaunchDetailView.swift in Sources */,
+				2A19A7CE2498844F000B1ABE /* GlobalAlert.swift in Sources */,
 				2A19A7B024935082000B1ABE /* Launch.swift in Sources */,
 				2A19A7C624964B17000B1ABE /* CONFIG.swift in Sources */,
 				2A19A77E24931093000B1ABE /* SceneDelegate.swift in Sources */,

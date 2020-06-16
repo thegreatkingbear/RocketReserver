@@ -34,6 +34,8 @@
 		2A19A7C424964504000B1ABE /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2A19A7C324964504000B1ABE /* KeychainSwift */; };
 		2A19A7C624964B17000B1ABE /* CONFIG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A19A7C524964B17000B1ABE /* CONFIG.swift */; };
 		2A19A7C824964FB3000B1ABE /* Login.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 2A19A7C724964FB3000B1ABE /* Login.graphql */; };
+		2A19A7CA24984D82000B1ABE /* BookTrip.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 2A19A7C924984D82000B1ABE /* BookTrip.graphql */; };
+		2A19A7CC24984DFB000B1ABE /* CancelTrip.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 2A19A7CB24984DFB000B1ABE /* CancelTrip.graphql */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +63,8 @@
 		2A19A7C02495CFAC000B1ABE /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		2A19A7C524964B17000B1ABE /* CONFIG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CONFIG.swift; sourceTree = "<group>"; };
 		2A19A7C724964FB3000B1ABE /* Login.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Login.graphql; sourceTree = "<group>"; };
+		2A19A7C924984D82000B1ABE /* BookTrip.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = BookTrip.graphql; sourceTree = "<group>"; };
+		2A19A7CB24984DFB000B1ABE /* CancelTrip.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = CancelTrip.graphql; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +111,8 @@
 				2A19A7A624932CDA000B1ABE /* LaunchList.graphql */,
 				2A19A7BC2494B6B0000B1ABE /* LaunchDetails.graphql */,
 				2A19A7C724964FB3000B1ABE /* Login.graphql */,
+				2A19A7C924984D82000B1ABE /* BookTrip.graphql */,
+				2A19A7CB24984DFB000B1ABE /* CancelTrip.graphql */,
 				2A19A7AB24934E2D000B1ABE /* ObjectStore.swift */,
 				2A19A7A924932D6D000B1ABE /* Network.swift */,
 				2A19A7A124932B05000B1ABE /* API.swift */,
@@ -209,7 +215,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A19A78824931095000B1ABE /* LaunchScreen.storyboard in Resources */,
+				2A19A7CA24984D82000B1ABE /* BookTrip.graphql in Resources */,
 				2A19A78524931095000B1ABE /* Preview Assets.xcassets in Resources */,
+				2A19A7CC24984DFB000B1ABE /* CancelTrip.graphql in Resources */,
 				2A19A7C824964FB3000B1ABE /* Login.graphql in Resources */,
 				2A19A78224931095000B1ABE /* Assets.xcassets in Resources */,
 				2A19A7BD2494B6B0000B1ABE /* LaunchDetails.graphql in Resources */,

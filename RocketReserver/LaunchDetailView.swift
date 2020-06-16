@@ -11,6 +11,7 @@ import SDWebImageSwiftUI
 
 struct LaunchDetailView: View {
     @EnvironmentObject var store: ObjectStore
+    @Environment(\.presentationMode) var presentationMode
     var id: String
     var site: String
     
@@ -36,10 +37,23 @@ struct LaunchDetailView: View {
                 }
             }
             
+            .sheet(isPresented: self.$store.isLoggedOut) {
+                LoginView().environmentObject(self.store)
+            }
+
             Spacer()
         }
+        .navigationBarItems(trailing: navigationBarButton())
         .onAppear() {
             self.store.fetchLaunchDetails(id: self.id)
+        }
+    }
+
+    private func navigationBarButton() -> some View {
+        Button("Book Now!") {
+            if !self.store.checkOutLogInStatus() {
+                
+            }
         }
     }
 }

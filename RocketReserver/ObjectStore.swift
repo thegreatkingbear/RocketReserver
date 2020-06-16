@@ -9,17 +9,32 @@
 import Foundation
 import Combine
 import Apollo
+import KeychainSwift
 
 class ObjectStore: ObservableObject {
+    
     @Published var launches: [Launch]
     @Published var launchDetail: Launch?
     @Published var isLoading: Bool
     @Published var lastConnection: LaunchListQuery.Data.Launch?
     @Published var activeRequest: Apollo.Cancellable?
+    @Published var isLoggedOut: Bool
+    @Published var loginEmail: String {
+       didSet {
+           if self.emailValidator(loginEmail) {
+               self.errorMessage = ""
+           } else {
+               self.errorMessage = "Valid email address needed"
+           }
+       }
+   }
+    @Published var errorMessage: String = ""
 
     init() {
         self.launches = []
         self.isLoading = true
+        self.isLoggedOut = false
+        self.loginEmail = ""
     }
     
     public func loadLaunches() {
@@ -100,5 +115,49 @@ class ObjectStore: ObservableObject {
                 print(error)
             }
         }
+    }
+    
+    public func loginWith(email: String) {
+        self.isLoading = true
+        
+        activeRequest = Network.shared.apollo.perform(mutation: LoginMutation(email: email)) { result in
+            self.activeRequest = nil
+            
+            defer {
+                self.isLoading = false
+            }
+            
+            switch result {
+            case .success(let results):
+                if let token = results.data?.login {
+                    let keychain = KeychainSwift()
+                    keychain.set(token, forKey: .loginKeychainKey)
+                    _ = self.checkOutLogInStatus()
+                }
+                
+                // should be handled before production
+                if let error = results.errors {
+                    print(error)
+                }
+            case .failure(let error):
+                // should be handled before production
+                print(error)
+            }
+        }
+    }
+    
+    public func checkOutLogInStatus() -> Bool {
+        let keychain = KeychainSwift()
+        isLoggedOut = keychain.get(.loginKeychainKey) == nil
+        return isLoggedOut
+    }
+
+    func emailValidator(_ string: String) -> Bool {
+        if string.count > 100 {
+            return false
+        }
+        let emailFormat = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailFormat)
+        return emailPredicate.evaluate(with: string)
     }
 }

@@ -7,22 +7,34 @@
 //
 
 import SwiftUI
+import KeychainSwift
+import Combine
 
 struct LoginView: View {
-    @State private var email: String
-    
+    @EnvironmentObject var store: ObjectStore
+
     var body: some View {
         VStack {
             Text("Log In")
-                .font(.largeTitle)
+                .font(.title)
+                .padding()
             
-            TextField("email address", text: $email)
+            TextField("email address", text: self.$store.loginEmail)
+                .padding()
             
-            Button(action: {}) {
-                Text("Submit")
+            Text(self.store.errorMessage)
+                .font(.callout)
+                .foregroundColor(.red)
+            
+            Spacer()
+                .frame(height: 100)
+            
+            Button("Submit") {
+                self.store.loginWith(email: self.store.loginEmail)
             }
             
             Spacer()
         }
     }
+    
 }
